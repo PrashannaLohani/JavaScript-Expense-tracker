@@ -15,7 +15,7 @@ function addIncome(data) {
   let totalIncome = tempIncome.reduce((acc, curr) => acc + curr);
   incomeId.innerHTML = `$${totalIncome}`;
 }
-addIncome(data);
+
 function addExpense(data) {
   let expenseId = document.getElementById("expense");
   let tempExpense = data
@@ -25,7 +25,6 @@ function addExpense(data) {
 
   expenseId.innerHTML = `$${tempExpense}`;
 }
-addExpense(data);
 
 function dataMap(data) {
   if (desc.value && money.value) {
@@ -45,35 +44,41 @@ function dataMap(data) {
   }
 }
 
-dataMap(data);
-
 // Define the function outside the event listener
 function addInputBalance() {
   var id = Math.ceil(Math.random() * 1000);
   var money = +document.getElementById("money").value;
   var desc = document.getElementById("desc").value;
-  let tempObj = {
-    id,
-    money,
-    desc,
-  };
-  data.push(tempObj);
 
-  amountValue = amountValue + money;
-  if (amountValue < 0) {
-    alert("Insufficient Balance");
-    return;
-  } else {
-    document.getElementById("amount").innerHTML = `$ ${amountValue}`;
-
-    dataMap(data);
-    if (money > 0) {
-      addIncome(data);
-    } else if (money < 0) {
-      addExpense(data);
+  if (money < 0) {
+    let val = Math.abs(money);
+    if (val > amountValue) {
+      alert("Insufficient Bal");
     } else {
-      return 0;
+      let tempObj = {
+        id,
+        money,
+        desc,
+      };
+      data.push(tempObj);
+      amountValue = amountValue + money;
+      document.getElementById("amount").innerHTML = `$ ${amountValue.toFixed(
+        2
+      )}`;
+      addExpense(data);
+      dataMap(data);
     }
+  } else {
+    amountValue = amountValue + money;
+    let tempObj = {
+      id,
+      money,
+      desc,
+    };
+    data.push(tempObj);
+    document.getElementById("amount").innerHTML = `$ ${amountValue.toFixed(2)}`;
+    addIncome(data);
+    dataMap(data);
   }
 }
 
