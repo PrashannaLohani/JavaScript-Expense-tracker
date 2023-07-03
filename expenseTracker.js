@@ -1,6 +1,7 @@
 let amountValue = 0;
 let incomeValue = 0;
 let expenseValue = 0;
+
 document.getElementById("income").innerHTML = `$ ${incomeValue}`;
 document.getElementById("expense").innerHTML = `$ ${expenseValue}`;
 document.getElementById("amount").innerHTML = `$ ${amountValue.toFixed(2)}`;
@@ -98,7 +99,6 @@ function incomeOnly(data) {
         </li>`
     );
   historyId.innerHTML = incomeData.join("");
-  addIncome(data);
 }
 function expenseOnly(data) {
   let historyId = document.getElementById("history");
@@ -114,7 +114,6 @@ function expenseOnly(data) {
         </li>`
     );
   historyId.innerHTML = expenseData.join("");
-  addExpense(data);
 }
 function Refresh() {}
 if (form) {
