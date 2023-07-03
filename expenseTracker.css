@@ -29,6 +29,11 @@ header {
 .Balance {
   margin: 30px auto;
   min-width: 350px;
+  cursor: pointer;
+}
+.Balance:hover {
+  text-shadow: 2px 4px 4px #1f1f1f;
+  transition: 0.5s;
 }
 .Balance h2 {
   display: flex;
@@ -47,6 +52,13 @@ header {
   border-radius: 2rem;
   box-shadow: 2px 3px 3px black;
 }
+.income {
+  cursor: pointer;
+}
+.income:hover {
+  text-shadow: 2px 4px 4px #1f1f1f;
+  transition: 0.5s;
+}
 .income p {
   font-size: 20px;
 }
@@ -56,6 +68,13 @@ header {
 }
 .Update .expense {
   margin-left: 2rem;
+}
+.expense {
+  cursor: pointer;
+  transition: 0.5s;
+}
+.expense:hover {
+  text-shadow: 2px 3px 3px #1f1f1f;
 }
 .expense p {
   font-size: 20px;

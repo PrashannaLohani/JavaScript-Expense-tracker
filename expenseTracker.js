@@ -6,7 +6,8 @@ document.getElementById("expense").innerHTML = `$ ${expenseValue}`;
 document.getElementById("amount").innerHTML = `$ ${amountValue.toFixed(2)}`;
 var form = document.getElementById("form");
 
-let data = [{ id: 1, desc: "", money: 0 }];
+let balance = incomeValue - expenseValue;
+let data = [{ id: 1, desc: "", money: 0, balance: 0 }];
 
 function addIncome(data) {
   let incomeId = document.getElementById("income");
@@ -33,14 +34,15 @@ function dataMap(data) {
       .filter((ele) => ele.desc !== "" && ele.money !== 0)
       .map(
         (ele) =>
-          `<li key="${ele.id}">
+          `<li style="margin : 1rem auto" key="${ele.id}">
       <span>${ele.desc}</span>
      <span ${ele.money < 0 ? `style= "color:#f00"` : `style="color:#0f0" `}> ${
             ele.money
           } </span>
+          <span>${ele.balance}</span>
     </li>`
       );
-    historyId.innerHTML = tempData;
+    historyId.innerHTML = tempData.join("");
   }
 }
 
@@ -53,12 +55,13 @@ function addInputBalance() {
   if (money < 0) {
     let val = Math.abs(money);
     if (val > amountValue) {
-      alert("Insufficient Bal");
+      alert("Insufficient Balance");
     } else {
       let tempObj = {
         id,
         money,
         desc,
+        balance: amountValue + money,
       };
       data.push(tempObj);
       amountValue = amountValue + money;
@@ -74,6 +77,7 @@ function addInputBalance() {
       id,
       money,
       desc,
+      balance: amountValue,
     };
     data.push(tempObj);
     document.getElementById("amount").innerHTML = `$ ${amountValue.toFixed(2)}`;
@@ -81,7 +85,38 @@ function addInputBalance() {
     dataMap(data);
   }
 }
+function incomeOnly(data) {
+  let historyId = document.getElementById("history");
+  let incomeData = data
+    .filter((ele) => ele.money > 0)
+    .map(
+      (ele) =>
+        `<li style ="margin : 1rem auto" key="${ele.id}">
+          <span>${ele.desc}</span>
+          <span style="color:#0f0">${ele.money}</span>
+          <span>${ele.balance}</span>
+        </li>`
+    );
+  historyId.innerHTML = incomeData.join("");
+  addIncome(data);
+}
+function expenseOnly(data) {
+  let historyId = document.getElementById("history");
 
+  let expenseData = data
+    .filter((ele) => ele.money < 0)
+    .map(
+      (ele) =>
+        `<li style ="margin : 1rem auto" key="${ele.id}">
+          <span>${ele.desc}</span>
+          <span style="color:#f00">${ele.money}</span>
+          <span>${ele.balance}</span>
+        </li>`
+    );
+  historyId.innerHTML = expenseData.join("");
+  addExpense(data);
+}
+function Refresh() {}
 if (form) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();

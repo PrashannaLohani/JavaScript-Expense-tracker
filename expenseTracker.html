@@ -11,16 +11,16 @@
     <header>
         <h1 >Expense Tracker</h1>
     </header>
-    <div class="Balance">
+    <div class="Balance" onclick="Refresh(data)">
         <h2>Your Balance</h2>
         <h1 id="amount"></h1>
     </div>
     <div class="Update">
-        <div class="income">
+        <div class="income" onclick="incomeOnly(data)">
             <p>Income</p>
             <h2 id="income"></h2>
         </div>
-        <div class="expense">
+        <div class="expense" onclick="expenseOnly(data)">
             <p>Expenses</p>
             <h2 id="expense"></h2>
         </div>
@@ -28,7 +28,6 @@
     <div class="History">
         <h2>History</h2>
         <div id="history">
-
         </div>
     </div>
     <div class="Transaction">
