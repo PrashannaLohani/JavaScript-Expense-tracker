@@ -45,6 +45,9 @@ function dataMap(data) {
       );
     historyId.innerHTML = tempData.join("");
   }
+  document.getElementById("Balance").addEventListener("click", function () {
+    dataMap(data);
+  });
 }
 
 // Define the function outside the event listener
@@ -115,7 +118,7 @@ function expenseOnly(data) {
     );
   historyId.innerHTML = expenseData.join("");
 }
-function Refresh() {}
+
 if (form) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();

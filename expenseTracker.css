@@ -26,20 +26,20 @@ header {
   font-size: 1rem;
   max-width: 20rem;
 }
-.Balance {
+#Balance {
   margin: 30px auto;
   min-width: 350px;
   cursor: pointer;
 }
-.Balance:hover {
+#Balance:hover {
   text-shadow: 2px 4px 4px #1f1f1f;
   transition: 0.5s;
 }
-.Balance h2 {
+#Balance h2 {
   display: flex;
   font-size: 23px;
 }
-.Balance h1 {
+#Balance h1 {
   color: green;
 }
 .Update {
