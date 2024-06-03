@@ -37,7 +37,7 @@ function dataMap(data) {
         (ele) =>
           `<li style="margin : 1rem auto" key="${ele.id}">
       <span>${ele.desc}</span>
-     <span ${ele.money < 0 ? `style= "color:#f00"` : `style="color:#0f0" `}> ${
+     <span ${ele.money < 0 ? `style= "color:#f00` : `style="color:#0f0" `}> ${
             ele.money
           } </span>
           <span>${ele.balance}</span>
